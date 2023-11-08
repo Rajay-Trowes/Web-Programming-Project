@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url(./img/wall4.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: transparent;
+        }
+
+        .logo img {
+            width: 250px;
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 30px;
+            color: #f04b24;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 40px;
+        }
+
+        .navbar a::before {
+            content: " ";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: rgb(255, 255, 255);
+            transition: .3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .left-box {
+            flex: 1;
+            padding: 30px;
+            background-color: transparent;
+        }
+
+        .left-box h2 {
+            font-size: 55px;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 60px;
+            margin-bottom: 30px;
+            color: #f04b24;
+        }
+
+        .left-box h2 span {
+            color: #109ad6;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .left-box p {
+            font-size: 25px;
+            color: #000000;
+        }
+
+        .right-box {
+            margin-top: 7%;
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff4f;
+            border: 1px solid #f04b24;
+            border-radius: 10px;
+        }
+
+        .right-box h2 {
+            color: #f04b24;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            color: #109ad6;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        input, select {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #f04b24;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #f04b24;
+        }
+
+        #reg {
+            margin: 20px auto;
+            padding: 15px 30px;
+            background-color: #f04b24;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #reg:hover {
+            background-color: #109ad6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .left-box {
+                flex: 1;
+                padding: 30px;
+                text-align: left;
+            }
+
+            .right-box {
+                margin-top: 0;
+                flex: 1;
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <a href="#" class="logo">
+        <img src="./img/logo.png" alt="Logo">
+    </a>
+    <div class="navbar">
+        <a href="#">Results</a>
+        <a href="#">Statistics</a>
+        <a href="#">Chart</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="left-box">
+        <h2>Welcome to Math Master <br><span>Your Multiplication Learning Adventure!</span></h2>
+    </div>
+    <div class="right-box">
+        <h2>Registration</h2>
+        <form>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="button" id="reg" onclick="Register()">Register</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const PlayerRegistrationData = [];
+
+    function Register() {
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const dob = document.getElementById("dob").value;
+        const gender = document.getElementById("gender").value;
+        const email = document.getElementById("email").value;
+
+        
+        const currentDate = new Date();
+        const birthDate = new Date(dob);
+        const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        const player = {
+            firstName,
+            lastName,
+            dob,
+            age,
+            gender,
+            email,
+        };
+
+        PlayerRegistrationData.push(player);
+
+        // Check if the form is valid (you can add your own validation logic here)
+        const isFormValid = firstName && lastName && dob && gender && email;
+
+        if (isFormValid) {
+            window.location.href = `play.html?data=${JSON.stringify(PlayerRegistrationData)}`;
+        } else {
+            alert("Please fill in all required fields.");
+        }
+    }
+</script>
+</body>
+</html>
+
