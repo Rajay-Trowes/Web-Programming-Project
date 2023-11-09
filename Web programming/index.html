@@ -14,7 +14,7 @@
 
         body {
             min-height: 100vh;
-            background: url(./img/wall4.jpg);
+            background: #f7f5f0;
             background-size: cover;
             background-position: center;
         }
@@ -39,7 +39,7 @@
         .navbar a {
             position: relative;
             font-size: 30px;
-            color: #f04b24;
+            color: #002173;
             font-weight: 500;
             text-decoration: none;
             margin-left: 40px;
@@ -81,38 +81,35 @@
             letter-spacing: 2px;
             line-height: 60px;
             margin-bottom: 30px;
-            color: #f04b24;
+            color: #002173;
         }
 
         .left-box h2 span {
-            color: #109ad6;
+            color: #f3ba2c;
             font-weight: 500;
             margin-bottom: 40px;
         }
 
-        .left-box p {
-            font-size: 25px;
-            color: #000000;
-        }
+        
 
         .right-box {
             margin-top: 7%;
             flex: 1;
             padding: 20px;
             background-color: #ffffff4f;
-            border: 1px solid #f04b24;
-            border-radius: 10px;
+            border: 2px solid #000000;
+            border-radius: 20px;
         }
 
         .right-box h2 {
-            color: #f04b24;
+            color:#f3ba2c;
             text-align: center;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            color: #109ad6;
+            color: #044e90;
         }
 
         label {
@@ -123,47 +120,103 @@
         input, select {
             margin-bottom: 15px;
             padding: 15px;
-            border: 1px solid #f04b24;
-            border-radius: 8px;
+            border: 2px solid #000000;;
+            border-radius: 20px;
             font-size: 18px;
-            color: #f04b24;
+            color: #464444;
         }
 
         #reg {
             margin: 20px auto;
             padding: 15px 30px;
-            background-color: #f04b24;
-            color: white;
+            background-color: #002173;
+            color: #f3ba2c;;
             border: none;
-            border-radius: 8px;
+            border-radius: 15px;
             cursor: pointer;
             font-size: 20px;
             transition: background-color 0.3s;
         }
 
         #reg:hover {
-            background-color: #109ad6;
+            background-color: #044e90;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1400px) {
             .container {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .left-box {
-                flex: 1;
-                padding: 30px;
-                text-align: left;
-            }
-
-            .right-box {
-                margin-top: 0;
-                flex: 1;
-                padding: 20px;
-                text-align: center;
-            }
+            flex-direction: column;
+            align-items: center;
         }
+
+        .left-box {
+            flex: 1;
+            padding: 5px;
+            text-align: center;
+        }
+        
+        .left-box h2 {
+            color: #002173;
+            font-weight: 500;
+            margin-top: 10px;
+            font-size: xx-large;
+        } 
+        .left-box h2 span {
+            color:#f3ba2c;
+            font-weight: 500;
+            padding-bottom: 10px;
+            font-size: x-large;
+        }
+
+        .right-box {
+            margin-top: 0px;
+            flex: 1;
+            padding: 20px;
+            width: 500px;
+        }
+
+        .navbar {
+            display: none;
+        }
+
+        .header {
+            padding: 2px;
+        }
+
+        .logo img {
+            width: 150px; 
+        }
+
+        .navbar a {
+            font-size: 20px;
+            margin-left: 20px;
+        }
+
+        .right-box h2 {
+            font-size: 25px;
+            padding-top: 10px;
+            padding-bottom: 15px;
+        }
+
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            font-size: 18px;
+            color:#002173;
+        }
+
+        input,
+        select {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%; 
+            
+
+        }
+    }
     </style>
 </head>
 <body>
@@ -172,9 +225,9 @@
         <img src="./img/logo.png" alt="Logo">
     </a>
     <div class="navbar">
-        <a href="#">Results</a>
-        <a href="#">Statistics</a>
-        <a href="#">Chart</a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
     </div>
 </header>
 
@@ -186,10 +239,10 @@
         <h2>Registration</h2>
         <form>
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName">
+            <input type="text" id="firstName" name="firstName" placeholder="First Name...">
 
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName">
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name">
 
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" required>
@@ -202,7 +255,7 @@
             </select>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="Email..." required>
 
             <button type="button" id="reg" onclick="Register()">Register</button>
         </form>
